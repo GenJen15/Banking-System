@@ -7,7 +7,7 @@ int main() {
     // Banking System 
     string name;
     int pin, choice;
-    const int correctPIN = 071506;
+    const int correctPin = 71506;
     float cash = 0.00;
     char reset;
     bool running = true;
@@ -25,25 +25,23 @@ int main() {
     
         cout << "Enter your PIN: ";
         cin >> pin;
-        system("pause");
-        system("cls");
+        
+        if(pin != correctPin){
+            cout << "Incorrect PIN! Please try again.\n";
+            return 0;
+        }
 
     // Main backing loop
-    while(choice != 3 && running == true){
+    while(running){
     
         // Check INPUT PIN if correct
         cout << "\n=======================================\n";
-        if(pin == correctPIN){
-            cout << "Welcome " << name << "!\n";
-            cout << "\nRemaining cash: $" << fixed << setprecision(2) << cash <<
+        cout << "Welcome " << name << "!\n";
+        cout << "\nRemaining cash: $" << fixed << setprecision(2) << cash <<
             endl;
-            cout << "-[1] Withdraw\n"
-                 << "-[2] Deposit\n"
-                 << "-[3] Exit\n";
-        }
-        else{ 
-            cout << "Invalid PIN! Please try again.\n";
-        }
+        cout << "-[1] Withdraw\n"
+             << "-[2] Deposit\n"
+             << "-[3] Exit\n";
         cout << "\n=======================================\n";
         
         // ask user 1-3
@@ -85,8 +83,6 @@ int main() {
                 cout << "\nInvalid response! Please try again.\n";
                 break;
         }
-        
-        system("cls");
         
         // check if the user would do another transaction
         if(running && choice != 3){
