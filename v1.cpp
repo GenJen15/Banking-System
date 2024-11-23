@@ -100,7 +100,7 @@ int main() {
                 cout << "Thank you for banking with us today, Goobye!\n";
                 running = false; // Exits the system
             }
-            system("cls);
+            system("cls");
         }
     }   
 
