@@ -6,11 +6,12 @@ int main() {
     
     // Banking System 
     string name;
-    int pin, choice, correctPIN = 071506;
+    int pin, choice;
+    const int correctPIN = 071506;
     float cash = 0.00;
     char reset;
     bool running = true;
-    float switchChoice;
+    float amount;
     
     // START
     
@@ -26,7 +27,8 @@ int main() {
         cin >> pin;
         system("pause");
         system("cls");
-    
+
+    // Main backing loop
     while(choice != 3 && running == true){
     
         // Check INPUT PIN if correct
@@ -53,30 +55,31 @@ int main() {
         switch(choice){
             case 1: // user chose 1
                 cout << "\n - How much would you like to withdraw: ";
-                cin >> switchChoice;
-                if(cash < switchChoice){
+                cin >> amount;
+                if(cash < amount){
                     cout << "\n==============================================\n"
                          << "| Insufficient Wallet. Please deposit first. |\n"
                          << "==============================================\n";
                 }
-                else if(cash >= switchChoice){
-                    cash -= switchChoice; // subtracts withdrawn cash
+                else if(cash >= amount){
+                    cash -= amount; // subtracts withdrawn cash
                     cout << "\nHello " << name << "You have now a total of $" << cash << ".\n";
-                    cout << "\nYou have withdrawn the amount of $" << switchChoice << ".\n"; 
+                    cout << "\nYou have withdrawn the amount of $" << amount << ".\n"; 
                 }
-                else{
+                else{ // Invalid Input
                     cout << "\nInvalid Response. Please try again.\n";
                 }
                 break;
             case 2: // user chose 2
                 cout << "\n - How much would you like to deposit: ";
-                cin >> switchChoice;
-                cash += switchChoice; // adds deposited cash
+                cin >> amount;
+                cash += amount; // adds deposited cash
                 cout << "\nHello " << name << "You have now a total of $" << cash << ".\n";
-                cout << "\nYou have deposited the amount of $" << switchChoice << ".\n"; 
+                cout << "\nYou have deposited the amount of $" << amount << ".\n"; 
                 break;
             case 3: // user chose 3
                 cout << "\nExiting...\n";
+                running = false;
                 break;
             default: // default option 
                 cout << "\nInvalid response! Please try again.\n";
@@ -86,7 +89,7 @@ int main() {
         system("cls");
         
         // check if the user would do another transaction
-        if(choice == 1 || choice == 2){
+        if(running && choice != 3){
             cout << "\nWould you like to do another transaction?(Y/N): ";
             cin >> reset;
         
@@ -94,14 +97,11 @@ int main() {
                 running = true; // Loop back
             }
             else{
+                cout << "Thank you for banking with us today, Goobye!\n";
                 running = false; // Exits the system
             }
+            system("cls);
         }
-        else{
-            running == false; // Exits the system
-        }
-        
-        system("cls");
     }   
 
     return 0;
