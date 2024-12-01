@@ -147,7 +147,7 @@ int main() {
             cout << "\nYou have deposited the amount of $" << amount << ".\n";
             break;
         case 3: // user chose 3
-            cout << "\nThank you for banking with us today, " << loginUser << " Goobye!\n";
+            cout << "\nThank you for banking with us today, " << loginUser << ". Goodbye!\n";
             mainRunning = false;
             break;
         default: // default option 
@@ -167,7 +167,7 @@ int main() {
             }
             else if (reset == 'N' || reset == 'n') {
                 system("cls");
-                cout << "\nThank you for banking with us today, "<< loginUser  << " Goobye!\n";
+                cout << "\nThank you for banking with us today, "<< loginUser  << ". Goodbye!\n";
                 mainRunning = false; // Exits the system
                 
             }
