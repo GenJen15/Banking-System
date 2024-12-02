@@ -1,4 +1,4 @@
-//0.0.1
+//0.0.2
 
 #include <iostream>
 #include <iomanip>
@@ -84,7 +84,9 @@ int main() {
         //Locks account after 3 wrong tries
         if (passLock == 0) {
             system("cls");
-            cout << "Your account has been lock due to many tries.\n";
+            cout << "\n===============================================\n";
+            cout << "\nYour account has been locked due to many tries.\n";
+            cout << "\n===============================================\n";
             mainRunning = false;
         }
 
@@ -142,12 +144,19 @@ int main() {
         case 2: // user chose 2
             cout << "\n - How much would you like to deposit: $";
             cin >> amount;
+            if(amount > 0){
             cash += amount; // adds deposited cash
             cout << "\nHello " << loginUser << ", You have now a total of $" << cash << ".\n";
             cout << "\nYou have deposited the amount of $" << amount << ".\n";
+            }
+            else{ // Invalid Input
+                cout << "\nInvalid response! Pleaes try again\n";
+                continue;
+            }
             break;
+                
         case 3: // user chose 3
-            cout << "\nThank you for banking with us today, " << loginUser << ". Goodbye!\n";
+            cout << "\nThank you for banking with us today, " << loginUser << ", Goodbye!\n";
             mainRunning = false;
             break;
         default: // default option 
@@ -167,7 +176,7 @@ int main() {
             }
             else if (reset == 'N' || reset == 'n') {
                 system("cls");
-                cout << "\nThank you for banking with us today, "<< loginUser  << ". Goodbye!\n";
+                cout << "\nThank you for banking with us today, "<< loginUser  << ", Goodbye!\n";
                 mainRunning = false; // Exits the system
                 
             }
@@ -179,3 +188,4 @@ int main() {
 
     return 0;
 }
+
